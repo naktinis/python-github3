@@ -66,7 +66,7 @@ def parse_link_value(instr):
     {'/foo': {'title*': "utf-8'de'letztes%20Kapitel", 'rel': 'self'}}
 
     """
-    out = {}
+    out = []
     if not instr:
         return out
     for link in [h.strip() for h in link_splitter.findall(instr)]:
@@ -79,5 +79,5 @@ def parse_link_value(instr):
                 param_dict[a.lower()] = _unquotestring(v)
             except ValueError:
                 param_dict[param.lower()] = None
-	out[url] = param_dict
+	out.append((url, param_dict))
     return out

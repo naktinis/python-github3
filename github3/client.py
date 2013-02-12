@@ -239,7 +239,7 @@ class PaginatedResourceList(ResourceList):
     """Extract the link to the next page from the 'Link' header.
     """
     next_links = [link[0] for link
-                  in parse_link_value(response.info().get('Link')).items()
+                  in parse_link_value(response.info().get('Link'))
                   if link[1]['rel'] == 'next']
     if next_links:
         return next_links[0]
